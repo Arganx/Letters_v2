@@ -59,8 +59,6 @@ public class Main {
 
     }
 
-
-
     public static void main(String[] args) {
 	Letters letters = new Letters();
 	Perceptron[] perceptrons = new Perceptron[9];
@@ -89,11 +87,11 @@ public class Main {
 
 	for(int i=0;i<20;i++) {
 	    if(i%2==0) {
-            Main.train(perceptrons, letters.getTab()[i], 0, 1, master);
+            Main.train(perceptrons, letters.getTab()[i], 0, 50, master);
         }
         else
         {
-            Main.train(perceptrons, letters.getTab()[i], 1, 1, master);
+            Main.train(perceptrons, letters.getTab()[i], 1, 50, master);
         }
     }
 

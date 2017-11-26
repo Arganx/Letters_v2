@@ -21,7 +21,7 @@ public class Perceptron {
     private double activation(Double sum)
     {
         return 1/(1+Math.pow(Math.E,-sum));
-    }
+    }   //zakres 0-1
 
     Perceptron(int size)
     {
@@ -51,6 +51,29 @@ public class Perceptron {
         Double out = activation(sum);
         return out;
     }
+
+    public Double sum(int[] inputs)
+    {
+        Double sum= 0.0;
+        for(int i=0;i<weights.length;i++)
+        {
+            sum+=inputs[i]*weights[i];
+        }
+        sum+=biasweight;
+        return sum;
+    }
+
+    public Double sum(double[] inputs)
+    {
+        Double sum= 0.0;
+        for(int i=0;i<weights.length;i++)
+        {
+            sum+=inputs[i]*weights[i];
+        }
+        sum+=biasweight;
+        return sum;
+    }
+
 
     public Double guessdouble(double[] inputs)
     {
