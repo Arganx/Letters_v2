@@ -3,12 +3,13 @@ package mypackage;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Created by qwerty on 17-Oct-17.
+ * Created by qwerty on 30-Nov-17.
  */
-public class Perceptron {
+public class Adaline extends Perceptron {
+
     private Double[] weights;
     private Double biasweight;
-    private Double lr = new Double(0.5);
+    private Double lr = 0.5;
 
     public Double getLr() {
         return lr;
@@ -31,11 +32,7 @@ public class Perceptron {
         //return 1/(1+Math.pow(Math.E,-sum));
     }   //zakres 0-1
 
-    Perceptron()
-    {
-
-    }
-    Perceptron(int size)
+    Adaline(int size)
     {
         weights = new Double[size];
         for(int i=0;i<weights.length;i++) {
@@ -64,11 +61,23 @@ public class Perceptron {
         return out;
     }
 
+    public double sum(int[] inputs)
+    {
+        int sum= 0;
+        for(int i=0;i<weights.length;i++)
+        {
+            sum+=inputs[i]*weights[i];
+        }
+        sum+=biasweight;
+        return sum;
+    }
+
+
     public void train(int[] input, int target)
     {
 
-        double guess =guess(input);
-        double error = (double)target - guess;
+        double sum =sum(input);
+        double error = target - sum;
 
         for(int i=0;i<weights.length;i++)
         {

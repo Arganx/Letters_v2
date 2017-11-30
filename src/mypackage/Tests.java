@@ -10,23 +10,17 @@ public class Tests {
         Letters letters = new Letters();
         int counter=0;
 
-        double tmp;
+        int tmp;
         for(int i=0;i<20;i++)
         {
             tmp=Main.guess(perceptrons,letters.getTab()[i],master);
-            if(i%2==0)
+            if(i%2==0 && tmp==0)
             {
-                if(tmp<0.5)
-                {
                     counter++;
-                }
             }
-            else
+            else if(i%2==1 && tmp==1)
             {
-                if(tmp>=0.5)
-                {
-                    counter++;
-                }
+                counter++;
             }
         }
 
@@ -34,8 +28,8 @@ public class Tests {
         return (counter/20);
 
     }
-
-    public double test_zaburzone(Perceptron[] perceptrons,Perceptron master)
+/*
+    public double test_zaburzone(Perceptron[] perceptrons,Perceptron master)    //TODO naprawic
     {
         int[][] letters1 = new int[10][];   //zaburzone 2 pixele
         int[][] letters2 = new int[10][];   //zaburzone 6 pixeli
@@ -247,23 +241,17 @@ public class Tests {
         };
 
         int counter=0;
-        double tmp;
+        int tmp[];
         for(int i=0;i<10;i++)
         {
-            tmp=Main.guess(perceptrons,letters1[i],master);
+            tmp=Main.guess(perceptrons,letters1[i]);
             if(i%2==0)//jesli litera powinna byc duza
             {
-                if(tmp>=0.5) //jesli jest duza
-                {
-                    counter++;
-                }
+
             }
             else //jesli litera powinna byc mała
             {
-                if(tmp<0.5)//jesli jest mała
-                {
-                    counter++;
-                }
+
             }
         }
 
@@ -273,27 +261,20 @@ public class Tests {
 
         for(int i=0;i<10;i++)
         {
-            tmp=Main.guess(perceptrons,letters2[i],master);
+            tmp=Main.guess(perceptrons,letters2[i]);
             if(i%2==0)//jesli litera powinna byc duza
             {
-                if(tmp>=0.5) //jesli jest duza
-                {
-                    counter++;
-                }
+
             }
             else //jesli litera powinna byc mała
             {
-                if(tmp<0.5)//jesli jest mała
-                {
-                    counter++;
-                }
             }
         }
         System.out.println("Dla testu bardzo zaburzonymi literami wynik to : "+counter +"/"+"10");
 
         return (a+counter);
 
-    }
+    }*/
 
 
 }
